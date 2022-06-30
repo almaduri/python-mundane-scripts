@@ -17,7 +17,7 @@ is_move = args.move
 
 match option.casefold():
     case "anime":
-        anime.move(anime_name, is_move)
+        anime.move(anime_name, is_move) if anime_name else print("No Name Specified")
     case "t7":
         t7.move(is_move)
     case _:
