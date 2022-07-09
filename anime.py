@@ -10,11 +10,23 @@ def is_dir_exist(dir: str) -> bool:
     return os.path.isdir(dir)
 
 
+def get_file_num(num_to_extract: str) -> str:
+    file_num = num_to_extract.split()[-1]
+
+    if "_" in file_num:
+        file_num = file_num.split("_")[1]
+    else:
+        file_num = "1"
+    
+    return file_num
+
+
 def move_to_dir_according_to_name(anime_name: str, is_move: int) -> None:
     parent_path = "D:\\videos\\anime"
 
     os.chdir(os.path.join(parent_path, "raw"))
 
+    # Get the total number of digits
     num_of_digits = get_num_of_digits(os.listdir())
 
     anime_path = os.path.join(parent_path, anime_name)
@@ -24,13 +36,8 @@ def move_to_dir_according_to_name(anime_name: str, is_move: int) -> None:
         os.mkdir(anime_path)
 
     for file in os.listdir():
-        file_num, file_ext = os.path.splitext(file)
-        file_num = file_num.split()[-1]
-
-        if "_" in file_num:
-            file_num = file_num.split("_")[1]
-        else:
-            file_num = "1"
+        num_to_extract, file_ext = os.path.splitext(file)
+        file_num = get_file_num(num_to_extract)
 
         file_num = file_num.zfill(num_of_digits)
         new_name = f"{file_num} {anime_name}{file_ext}"
