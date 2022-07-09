@@ -15,10 +15,13 @@ anime_name = args.name
 option = args.option
 is_move = args.move
 
-match option.casefold():
-    case "anime":
-        anime.move_to_dir_according_to_name(anime_name, is_move) if anime_name else print("No Name Specified")
-    case "t7":
-        t7.move(is_move)
-    case _:
-        print("Not Found")
+if option:
+    match option.casefold():
+        case "anime":
+            anime.move_to_dir_according_to_name(anime_name, is_move) if anime_name else print("No Name Specified")
+        case "t7":
+            t7.move(is_move)
+        case _:
+            print("Not Found")
+else:
+    print("No Option Specified")
