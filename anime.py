@@ -2,16 +2,25 @@ import os
 import shutil
 
 
-def move(anime_name: str, is_move: int) -> None:
-    parent_path = "D:/videos/anime"
+def get_num_of_digits(list_of_files: list) -> int:
+    return len(str(len(list_of_files)))
+
+
+def is_dir_exist(dir: str) -> bool:
+    return os.path.isdir(dir)
+
+
+def move_to_dir_according_to_name(anime_name: str, is_move: int) -> None:
+    parent_path = "D:\\videos\\anime"
 
     os.chdir(os.path.join(parent_path, "raw"))
 
-    num_of_digits = len(str(len(os.listdir())))
+    num_of_digits = get_num_of_digits(os.listdir())
 
     anime_path = os.path.join(parent_path, anime_name)
 
-    if not os.path.isdir(anime_path):
+    # Create new directory, if directory doesn't exist
+    if not is_dir_exist(anime_path):
         os.mkdir(anime_path)
 
     for file in os.listdir():
