@@ -2,12 +2,12 @@ import os
 import shutil
 
 
-def move(is_move: int) -> None:
-    os.chdir("D:/videos/t7/raw")
+def move_to_dir_according_to_name(is_move: int) -> None:
+    os.chdir("D:\\videos\\t7\\raw")
 
     programs_list = {
-        "LAPOR PAK!" : "D:/videos/t7/lapor-pak!",
-        "BTS" : "D:/videos/t7/bts"
+        "LAPOR PAK!" : "D:\\videos\\t7\\lapor-pak!",
+        "BTS" : "D:\\videos\\t7\\bts"
     }
 
 
