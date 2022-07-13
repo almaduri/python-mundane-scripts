@@ -6,10 +6,6 @@ def get_num_of_digits(list_of_files: list) -> int:
     return len(str(len(list_of_files)))
 
 
-def is_dir_exist(dir: str) -> bool:
-    return os.path.isdir(dir)
-
-
 def get_file_num(num_to_extract: str) -> str:
     file_num = num_to_extract.split()[-1]
 
@@ -32,7 +28,7 @@ def move_to_dir_according_to_name(anime_name: str, is_move: int) -> None:
     anime_path = os.path.join(parent_path, anime_name)
 
     # Create new directory, if directory doesn't exist
-    if not is_dir_exist(anime_path):
+    if not os.path.isdir(anime_path):
         os.mkdir(anime_path)
 
     for file in os.listdir():

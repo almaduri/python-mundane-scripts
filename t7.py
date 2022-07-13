@@ -24,6 +24,12 @@ def move_file(file_name: str, is_move: int) -> None:
     right_parentheses_index = file_name.rindex(")")
     date_folder = file_name[left_parentheses_index + 1:right_parentheses_index]
     date = date_folder.replace(file_name[left_parentheses_index + 3], "-")
+    day, month, year = date.split("-")
+    
+    if len(year) == 2:
+        year = f"20{year}"
+
+    date = f"{year}-{month}-{day}"
 
     program_name = find_program(file_name, left_parentheses_index, right_parentheses_index).casefold()
 

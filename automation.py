@@ -25,20 +25,3 @@ if option:
             print("Not Found")
 else:
     print("No Option Specified")
-
-
-
-
-
-
-
-
-# import os
-
-# os.chdir("D:\\videos\\t7\\bts")
-
-# for dir in os.listdir():
-#     day, month, year = dir.split("-")
-#     new_name = f"{year}-{month}-{day}"
-#     print(f"{dir} --> {new_name}")
-#     # os.rename(dir, new_name)
