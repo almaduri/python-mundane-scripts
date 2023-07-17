@@ -1,6 +1,6 @@
 import argparse
 import anime
-import t7
+# import t7
 
 
 parser = argparse.ArgumentParser()
@@ -21,8 +21,8 @@ if option:
     match option.casefold():
         case "anime":
             anime.move_to_dir_according_to_name(anime_name, starting_episode, is_move) if anime_name else print("No Name Specified")
-        case "t7":
-            t7.move_to_dir_according_to_name(is_move)
+        # case "t7":
+        #     t7.move_to_dir_according_to_name(is_move)
         case _:
             print("Not Found")
 else:

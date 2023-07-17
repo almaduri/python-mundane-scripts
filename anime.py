@@ -1,6 +1,8 @@
 import os
 import shutil
 
+parent_path = "/media/data/Videos/anime"
+
 
 def get_num_of_digits(list_of_files: list) -> int:
     return len(str(len(list_of_files)))
@@ -21,8 +23,6 @@ def get_file_num(num_to_extract: str, starting_episode: int) -> str:
 
 
 def move_to_dir_according_to_name(anime_name: str, starting_episode: int, is_move: int) -> None:
-    parent_path = "D:\\videos\\anime"
-
     os.chdir(os.path.join(parent_path, "raw"))
 
     # Get the total number of digits

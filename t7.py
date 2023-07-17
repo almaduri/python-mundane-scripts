@@ -2,11 +2,14 @@ import os
 import shutil
 
 
-os.chdir("D:\\videos\\t7\\raw")
+os.chdir("")
+# os.chdir("D:\\videos\\t7\\raw")
 
 programs_list = {
-    "LAPOR PAK!" : "D:\\videos\\t7\\lapor-pak!",
-    "BTS" : "D:\\videos\\t7\\bts"
+    "LAPOR PAK!" : "",
+    "BTS" : ""
+    # "LAPOR PAK!" : "D:\\videos\\t7\\lapor-pak!",
+    # "BTS" : "D:\\videos\\t7\\bts"
 }
 
 
