@@ -52,4 +52,5 @@ def move_to_dir_according_to_name(anime_name: str, starting_episode: int, is_mov
             subprocess.run(['mkvmerge', '-q', '-o', new_full_path, file])
 
     if is_move:
-        subprocess.run(['pwsh', '-Command', 'rm', '*.ts'])
+        subprocess.run(['pwsh', '-Command', 'rm', '*'])
+        # subprocess.run(['pwsh', '-Command', 'rm', '*.ts'])
