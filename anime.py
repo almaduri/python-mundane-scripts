@@ -1,7 +1,8 @@
 import os
-import shutil
+import subprocess
 
-parent_path = "/media/data/Videos/anime"
+
+parent_path = 'D:\\Videos\\anime\\'
 
 
 def get_num_of_digits(list_of_files: list) -> int:
@@ -11,8 +12,8 @@ def get_num_of_digits(list_of_files: list) -> int:
 def get_file_num(num_to_extract: str, starting_episode: int) -> str:
     file_num = num_to_extract.split()[-1]
 
-    if "_" in file_num:
-        file_num = int(file_num.split("_")[1])
+    if '_' in file_num:
+        file_num = int(file_num.split('_')[1])
         file_num = starting_episode + file_num - 1
     else:
         file_num = starting_episode
@@ -23,10 +24,10 @@ def get_file_num(num_to_extract: str, starting_episode: int) -> str:
 
 
 def move_to_dir_according_to_name(anime_name: str, starting_episode: int, is_move: int) -> None:
-    os.chdir(os.path.join(parent_path, "raw"))
+    os.chdir(os.path.join(parent_path, 'raw'))
 
     # Get the total number of digits
-    if anime_name == "One Piece":
+    if anime_name == 'One Piece':
         num_of_digits = 4
     else:
         num_of_digits = get_num_of_digits(os.listdir())
@@ -38,13 +39,17 @@ def move_to_dir_according_to_name(anime_name: str, starting_episode: int, is_mov
         os.mkdir(anime_path)
 
     for file in os.listdir():
-        num_to_extract, file_ext = os.path.splitext(file)
+        num_to_extract, _ = os.path.splitext(file)
         file_num = get_file_num(num_to_extract, starting_episode)
 
         file_num = file_num.zfill(num_of_digits)
-        new_name = f"{file_num} {anime_name}{file_ext}"
+        new_name = f'{file_num} {anime_name}.mkv'
         new_full_path = os.path.join(anime_path, new_name)
-        print(f"{file}\n--> {new_full_path}\n")
+
+        print(f'{file}\n--> {new_full_path}\n')
 
         if is_move:
-            shutil.move(file, new_full_path)
+            subprocess.run(['mkvmerge', '-q', '-o', new_full_path, file])
+
+    if is_move:
+        subprocess.run(['pwsh', '-Command', 'rm', '*.ts'])
