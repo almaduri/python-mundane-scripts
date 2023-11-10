@@ -6,11 +6,12 @@ class Anime:
     def __init__(self) -> None:
         self.__parent_path = 'D:\\Videos\\anime\\'
 
-    def get_num_of_digits(self, list_of_files: list) -> int:
+    @staticmethod
+    def get_num_of_digits(list_of_files: list) -> int:
         return len(str(len(list_of_files)))
 
-
-    def get_file_num(self, num_to_extract: str, starting_episode: int) -> str:
+    @staticmethod
+    def get_file_num(num_to_extract: str, starting_episode: int) -> str:
         file_num = num_to_extract.split()[-1]
 
         if '_' in file_num:
@@ -18,11 +19,10 @@ class Anime:
             file_num = starting_episode + file_num - 1
         else:
             file_num = starting_episode
-        
+
         file_num = str(file_num)
 
         return file_num
-
 
     def move_to_dir_according_to_name(self, anime_name: str, starting_episode: int, is_move: int) -> None:
         os.chdir(os.path.join(self.__parent_path, 'raw'))
