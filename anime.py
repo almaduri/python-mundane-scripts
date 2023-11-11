@@ -31,7 +31,7 @@ class Anime:
         if anime_name == 'One Piece':
             num_of_digits = 4
         else:
-            num_of_digits = self.get_num_of_digits(os.listdir())
+            num_of_digits = Anime.get_num_of_digits(os.listdir())
 
         anime_path = os.path.join(self.__parent_path, anime_name)
 
@@ -41,7 +41,7 @@ class Anime:
 
         for file in os.listdir():
             num_to_extract, _ = os.path.splitext(file)
-            file_num = self.get_file_num(num_to_extract, starting_episode)
+            file_num = Anime.get_file_num(num_to_extract, starting_episode)
 
             file_num = file_num.zfill(num_of_digits)
             new_name = f'{file_num} {anime_name}.mkv'
