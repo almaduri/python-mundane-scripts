@@ -24,7 +24,12 @@ class Anime:
 
         return file_num
 
-    def move_to_dir_according_to_name(self, anime_name: str, digits: int, change_digits: int, starting_episode: int, is_move: int) -> None:
+    def move_to_dir_according_to_name(self,
+                                      anime_name: str,
+                                      digits: int,
+                                      change_digits: int,
+                                      starting_episode: int,
+                                      is_move: int) -> None:
         os.chdir(os.path.join(self.__parent_path, 'raw'))
 
         # Get the total number of digits
